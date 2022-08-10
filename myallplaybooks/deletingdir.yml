@@ -1,0 +1,13 @@
+--- # deleting folder
+- hosts: webservers
+  user: ansible
+  name: my deleting dir
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: deleting a dir
+      file:
+        path: /home/ansible/rrrdir
+        state: absent
+        

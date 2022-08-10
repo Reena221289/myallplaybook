@@ -1,0 +1,15 @@
+--- #installing tree software
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+
+
+  tasks:
+    - name: install tree software in webserver
+      action: yum pkg=tre state=present
+      ignore_errors: yes
+    - name: install httpd software in webserver
+      action: yum pkg=httpd state=present
+ 

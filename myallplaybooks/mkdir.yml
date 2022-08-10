@@ -1,0 +1,13 @@
+--- #make folder
+- hosts: all
+  name: my test directory
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: creating
+      file:
+       path: /home/ansible/rrrdir
+       state: directory
+

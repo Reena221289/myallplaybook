@@ -1,0 +1,9 @@
+--- # my testplaybook
+- hosts: webservers
+  tasks:
+    - name: install httpd software in webservers
+      action: yum pkg=httpd state=present
+
+
+    - name: install tree in webservers
+      action: yum pkg=tree state=present

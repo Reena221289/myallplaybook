@@ -1,0 +1,11 @@
+--- # creating one user
+- hosts: all
+  name: my new user
+  become: yes
+  user: ansible
+  connection: ssh
+
+  tasks:
+    - name: creating user
+      user: name=reena
+
