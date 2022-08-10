@@ -1,0 +1,39 @@
+--- # install jenkin software
+- hosts: webservers
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing java s/w
+      yum:
+        name: java
+        state: present
+
+    - name: installing wget command
+      yum: 
+        name: wget
+        state: present
+
+    - name: downloading jenkins s/w
+      get_url:
+        url: https://pkg.jenkins.io/redhat/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
+
+    - name: importing jenkin key
+      rpm_key: 
+        state: present
+        key: https://pkg.jenkins.io/redhat/jenkins.io.key
+
+    - name: installing jenkin software
+      yum:
+        name: jenkins
+        state: present
+    - name: starting jenkin service
+      service:
+        name: jenkins
+        state: started
+        enabled: yes
+
+
+
